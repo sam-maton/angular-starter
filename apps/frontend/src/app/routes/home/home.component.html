@@ -1,15 +1,43 @@
 <main>
   <section class="home-login">
+    @if(!showSignup()){
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field>
+      <button type="submit" matButton="filled">Basic</button>
+    </form>
+    }@else {
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password" />
+        <input
+          (change)="updateSignUpPassword($event)"
+          matInput
+          formControlName="password"
+        />
       </mat-form-field>
-      <button type="submit" matButton="filled">Basic</button>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmPassword" />
+      </mat-form-field>
     </form>
+
+    }
+    <div>
+      <button matButton (click)="toggleSignup()">
+        {{ showSignup() ? 'Login here' : 'Click here to sign up!' }}
+      </button>
+    </div>
   </section>
+  ?
 </main>

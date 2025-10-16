@@ -1,0 +1,13 @@
+.home {
+  &-login {
+    box-sizing: border-box;
+    max-width: 600px;
+    margin: 10rem auto;
+    padding: 3rem;
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

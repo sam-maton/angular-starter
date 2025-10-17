@@ -40,8 +40,19 @@ export class HomeComponent {
     ]),
   });
 
-  onSubmit() {
-    console.log(this.loginForm);
+  async onLogin() {
+    const { email, password } = this.loginForm.value;
+    if (!email || !password) return;
+    const { data, error } = await authClient.signIn.email({ email, password });
+
+    console.log(data, error);
+    if (error) {
+      // Handle error (e.g., show a notification)
+      console.error('Login error:', error.message);
+    } else {
+      // Handle successful login (e.g., redirect to dashboard)
+      console.log('Login successful:', data);
+    }
   }
 
   async onSignup() {

@@ -1,7 +1,7 @@
 <main>
   <section class="home-login">
     @if(!showSignup()){
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="email" />

@@ -5,6 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { authClient } from '../../../lib/auth-client';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -43,8 +44,14 @@ export class HomeComponent {
     console.log(this.loginForm);
   }
 
-  onSignup() {
-    console.log(this.signupForm.value);
+  async onSignup() {
+    const { data, error } = await authClient.signUp.email({
+      email: 'test@user.com',
+      password: 'password123',
+      name: 'Test User',
+    });
+
+    console.log({ data, error });
   }
 
   toggleSignup() {

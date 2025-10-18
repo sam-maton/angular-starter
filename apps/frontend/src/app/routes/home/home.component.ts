@@ -28,7 +28,7 @@ export class HomeComponent {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.email]),
-    password: new FormControl(''),
+    password: new FormControl('', [Validators.minLength(8)]),
   });
 
   signupForm = new FormGroup({
@@ -50,8 +50,9 @@ export class HomeComponent {
       // Handle error (e.g., show a notification)
       console.error('Login error:', error.message);
     } else {
-      // Handle successful login (e.g., redirect to dashboard)
+      //redirect to dashboard
       console.log('Login successful:', data);
+      
     }
   }
 

@@ -1,10 +1,16 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  signal,
+  inject,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { authClient } from '../../../lib/auth-client';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
+  router = inject(Router);
   showSignup = signal(false);
   signUpPassword = signal('');
 
@@ -52,7 +59,7 @@ export class HomeComponent {
     } else {
       //redirect to dashboard
       console.log('Login successful:', data);
-      
+      this.router.navigate(['/dashboard']);
     }
   }
 

@@ -2,39 +2,38 @@
   <section class="home-login">
     @if(!showSignup()){
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="email" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" />
-      </mat-form-field>
-      <button type="submit" matButton="filled">Login</button>
+      <p-floatlabel>
+        <input id="email" type="email" pInputText formControlName="email" />
+        <label for="email">Email</label>
+      </p-floatlabel>
+      <p-floatlabel>
+        <p-password formControlName="password" inputId="password" />
+        <label for="password">Password</label>
+      </p-floatlabel>
+      <button type="submit" pButton>Login</button>
     </form>
     }@else {
     <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input
-          (change)="updateSignUpPassword($event)"
-          matInput
-          formControlName="password"
+      <p-floatlabel>
+        <input id="email" type="email" pInputText formControlName="email" />
+        <label for="email">Email</label>
+      </p-floatlabel>
+      <p-floatlabel>
+        <p-password formControlName="password" inputId="password" />
+        <label for="password">Password</label>
+      </p-floatlabel>
+      <p-floatlabel>
+        <p-password
+          formControlName="confirmPassword"
+          inputId="confirmPassword"
         />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Confirm Password</mat-label>
-        <input matInput formControlName="confirmPassword" />
-      </mat-form-field>
-      <button type="submit" matButton="filled">Sign Up</button>
+        <label for="confirmPassword">Password</label>
+      </p-floatlabel>
+      <button type="submit" pButton>Sign Up</button>
     </form>
     }
     <div>
-      <button matButton (click)="toggleSignup()">
+      <button pButton link (click)="toggleSignup()">
         {{ showSignup() ? 'Login here' : 'Click here to sign up!' }}
       </button>
     </div>

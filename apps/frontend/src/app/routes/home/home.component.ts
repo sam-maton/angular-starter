@@ -12,19 +12,21 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { authClient } from '../../../lib/auth-client';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
     ReactiveFormsModule,
+    InputTextModule,
+    FloatLabelModule,
+    PasswordModule,
+    ButtonModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

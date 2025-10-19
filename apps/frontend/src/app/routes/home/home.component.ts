@@ -54,11 +54,8 @@ export class HomeComponent {
 
     console.log(data, error);
     if (error) {
-      // Handle error (e.g., show a notification)
       console.error('Login error:', error.message);
     } else {
-      //redirect to dashboard
-      console.log('Login successful:', data);
       this.router.navigate(['/dashboard']);
     }
   }

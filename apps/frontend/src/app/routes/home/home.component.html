@@ -2,7 +2,7 @@
   <section class="home-login">
     @if(!showSignup()){
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <p-floatlabel>
+      <p-iftalabel>
         <label for="email">Email</label>
         <input
           id="email"
@@ -10,17 +10,28 @@
           pInputText
           formControlName="email"
           fluid
+          required
         />
-      </p-floatlabel>
-      <p-floatlabel>
+      </p-iftalabel>
+      <p-iftalabel>
         <p-password formControlName="password" inputId="password" fluid />
         <label for="password">Password</label>
-      </p-floatlabel>
+      </p-iftalabel>
       <button type="submit" pButton>Login</button>
     </form>
     }@else {
     <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
-      <p-floatlabel>
+      <p-iftalabel>
+        <input
+          id="username"
+          type="text"
+          pInputText
+          formControlName="username"
+          fluid
+        />
+        <label for="email">Username</label>
+      </p-iftalabel>
+      <p-iftalabel>
         <input
           id="email"
           type="email"
@@ -29,19 +40,19 @@
           fluid
         />
         <label for="email">Email</label>
-      </p-floatlabel>
-      <p-floatlabel>
+      </p-iftalabel>
+      <p-iftalabel>
         <p-password formControlName="password" inputId="password" fluid />
         <label for="password">Password</label>
-      </p-floatlabel>
-      <p-floatlabel>
+      </p-iftalabel>
+      <p-iftalabel>
         <p-password
           formControlName="confirmPassword"
           inputId="confirmPassword"
           fluid
         />
         <label for="confirmPassword">Confirm password</label>
-      </p-floatlabel>
+      </p-iftalabel>
       <button type="submit" pButton>Sign Up</button>
     </form>
     }

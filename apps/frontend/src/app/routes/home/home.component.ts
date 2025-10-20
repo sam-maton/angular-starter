@@ -13,7 +13,7 @@ import {
 import { Router } from '@angular/router';
 import { authClient } from '../../../lib/auth-client';
 import { InputTextModule } from 'primeng/inputtext';
-import { FloatLabelModule } from 'primeng/floatlabel';
+import { IftaLabelModule } from 'primeng/iftalabel';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 
@@ -24,7 +24,7 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     ReactiveFormsModule,
     InputTextModule,
-    FloatLabelModule,
+    IftaLabelModule,
     PasswordModule,
     ButtonModule,
   ],
@@ -36,11 +36,15 @@ export class HomeComponent {
   signUpPassword = signal('');
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.email]),
+    email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.minLength(8)]),
   });
 
   signupForm = new FormGroup({
+    username: new FormControl('', [
+      Validators.minLength(5),
+      Validators.required,
+    ]),
     email: new FormControl('', [Validators.email]),
     password: new FormControl('', [Validators.minLength(8)]),
     confirmPassword: new FormControl('', [
@@ -51,10 +55,12 @@ export class HomeComponent {
 
   async onLogin() {
     const { email, password } = this.loginForm.value;
-    if (!email || !password) return;
+    if (!email || !password) {
+      this.loginForm.setErrors({ incomplete: true });
+      return;
+    }
     const { data, error } = await authClient.signIn.email({ email, password });
 
-    console.log(data, error);
     if (error) {
       console.error('Login error:', error.message);
     } else {
@@ -63,10 +69,14 @@ export class HomeComponent {
   }
 
   async onSignup() {
+    const { username, email, password } = this.signupForm.value;
+
+    if (!username || !email || !password) return;
+
     const { data, error } = await authClient.signUp.email({
-      email: 'test@user.com',
-      password: 'password123',
-      name: 'Test User',
+      email: email,
+      password: password,
+      name: username,
     });
 
     console.log({ data, error });

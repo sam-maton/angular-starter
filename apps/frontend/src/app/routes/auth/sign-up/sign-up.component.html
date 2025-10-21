@@ -1,0 +1,50 @@
+<main>
+  <section class="home-login">
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+      <p-iftalabel>
+        <input
+          id="username"
+          type="text"
+          pInputText
+          formControlName="username"
+          fluid
+        />
+        <label for="email">Username</label>
+      </p-iftalabel>
+      <p-iftalabel>
+        <input
+          id="email"
+          type="email"
+          pInputText
+          formControlName="email"
+          fluid
+        />
+        <label for="email">Email</label>
+      </p-iftalabel>
+      <p-iftalabel>
+        <p-password formControlName="password" inputId="password" fluid />
+        <label for="password">Password</label>
+      </p-iftalabel>
+      <p-iftalabel>
+        <p-password
+          formControlName="confirmPassword"
+          inputId="confirmPassword"
+          fluid
+        />
+        <label for="confirmPassword">Confirm password</label>
+      </p-iftalabel>
+      <button type="submit" pButton>Sign Up</button>
+    </form>
+    <div class="home-login--toggle">
+      <span>Already have an account?&nbsp;</span>
+      <a
+        class="p-button-link"
+        href="/login"
+        pButtonLabel
+        rel="noopener noreferrer"
+      >
+        Login here
+      </a>
+    </div>
+  </section>
+</main>

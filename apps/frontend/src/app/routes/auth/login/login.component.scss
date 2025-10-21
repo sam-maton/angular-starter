@@ -1,0 +1,21 @@
+.home {
+  &-login {
+    box-sizing: border-box;
+    max-width: 40rem;
+    margin: 10rem auto;
+    padding: 3rem;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 1rem;
+      gap: 2rem;
+    }
+
+    &--toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

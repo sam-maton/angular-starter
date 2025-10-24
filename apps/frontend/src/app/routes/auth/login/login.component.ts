@@ -44,7 +44,7 @@ export class LoginComponent {
     if (error) {
       console.error('Login error:', error.message);
     } else {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/']);
     }
   }
 }

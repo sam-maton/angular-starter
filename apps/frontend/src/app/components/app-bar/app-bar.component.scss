@@ -1,0 +1,13 @@
+.app-bar {
+  width: 272px;
+  height: 100vh;
+
+  &__content {
+    padding: 0.5rem;
+  }
+
+  &__header {
+    padding: 0.5rem;
+    background-color: blue;
+  }
+}

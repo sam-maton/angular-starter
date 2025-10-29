@@ -1,15 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
+import { AvatarModule } from 'primeng/avatar';
+import { ButtonModule } from 'primeng/button';
+import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-bar',
-  imports: [MenubarModule],
+  imports: [MenubarModule, AvatarModule, ButtonModule, MenuModule],
   templateUrl: './app-bar.component.html',
   styleUrl: './app-bar.component.scss',
 })
 export class AppBarComponent implements OnInit {
   menuItems: MenuItem[] = [];
+
+  items = [
+    {
+      label: 'Options',
+      items: [
+        {
+          label: 'Refresh',
+          icon: 'pi pi-refresh',
+        },
+        {
+          label: 'Export',
+          icon: 'pi pi-upload',
+        },
+      ],
+    },
+  ];
 
   ngOnInit() {
     this.menuItems = [

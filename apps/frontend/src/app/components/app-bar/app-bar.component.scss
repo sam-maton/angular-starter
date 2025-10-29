@@ -1,13 +1,30 @@
 .app-bar {
-  width: 272px;
+  width: 252px;
   height: 100vh;
 
   &__content {
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   &__header {
     padding: 0.5rem;
-    background-color: blue;
+    // background-color: blue;
+  }
+
+  &__nav {
+    // background-color: red;
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+
+  &__footer {
+    // background-color: green;
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
   }
 }

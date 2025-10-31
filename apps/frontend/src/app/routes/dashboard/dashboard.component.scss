@@ -1,0 +1,10 @@
+:host {
+  flex-grow: 1;
+  background-color: var(--p-neutral-50);
+  border-radius: 14px;
+  margin: 1rem;
+  margin-left: 0;
+  padding: 1rem 2rem;
+  overflow-y: scroll;
+  border: 1px solid var(--p-slate-200);
+}

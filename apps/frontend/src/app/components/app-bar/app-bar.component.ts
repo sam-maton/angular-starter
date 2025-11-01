@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { authClient } from '../../../lib/auth-client';
 import { MenubarModule } from 'primeng/menubar';
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
@@ -12,70 +13,33 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './app-bar.component.scss',
 })
 export class AppBarComponent implements OnInit {
-  menuItems: MenuItem[] = [];
-
-  items = [
-    {
-      label: 'Options',
-      items: [
-        {
-          label: 'Refresh',
-          icon: 'pi pi-refresh',
-        },
-        {
-          label: 'Export',
-          icon: 'pi pi-upload',
-        },
-      ],
-    },
-  ];
+  items: MenuItem[] = [];
 
   ngOnInit() {
-    this.menuItems = [
+    this.items = [
       {
-        label: 'Home',
-        icon: 'pi pi-home',
-      },
-      {
-        label: 'Features',
-        icon: 'pi pi-star',
-      },
-      {
-        label: 'Projects',
-        icon: 'pi pi-search',
         items: [
           {
-            label: 'Components',
-            icon: 'pi pi-bolt',
+            label: 'Profile',
+            icon: 'pi pi-user',
           },
           {
-            label: 'Blocks',
-            icon: 'pi pi-server',
-          },
-          {
-            label: 'UI Kit',
-            icon: 'pi pi-pencil',
-          },
-          {
-            label: 'Templates',
-            icon: 'pi pi-palette',
-            items: [
-              {
-                label: 'Apollo',
-                icon: 'pi pi-palette',
-              },
-              {
-                label: 'Ultima',
-                icon: 'pi pi-palette',
-              },
-            ],
+            label: 'Sign Out',
+            icon: 'pi pi-sign-out',
+            command: this.onSignOut,
           },
         ],
       },
-      {
-        label: 'Contact',
-        icon: 'pi pi-envelope',
-      },
     ];
+  }
+
+  async onSignOut() {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess() {
+          window.location.href = '/login';
+        },
+      },
+    });
   }
 }

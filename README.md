@@ -4,8 +4,9 @@ An Angular starter project with authentication and a dashboard layout. Setup usi
 
 ## Todo List
 
-- [ ] Implement dashboard app bar
-- [ ] Add signout button to app bar
-- [ ] Add user profile pic to app bar
+- [x] Implement dashboard app bar
+- [x] Add signout button to app bar
+- [ ] Add user info to app bar
 - [ ] Add proper form validation to auth forms
+- [ ] Update sidebar to include mobile responsiveness
 - [ ] Update readme with setup instructions

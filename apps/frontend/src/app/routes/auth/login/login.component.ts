@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,15 @@ import { ButtonModule } from 'primeng/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
-  router = inject(Router);
+  private router = inject(Router);
+  private userService = inject(UserService);
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', [Validators.minLength(8)]),
+    email: new FormControl('test@user.com', [
+      Validators.email,
+      Validators.required,
+    ]),
+    password: new FormControl('password123', [Validators.minLength(8)]),
   });
 
   async onLogin() {

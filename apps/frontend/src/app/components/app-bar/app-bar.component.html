@@ -24,6 +24,9 @@
     <nav class="app-bar__nav"></nav>
     <div class="app-bar__footer">
       <p-avatar label="P" class="mr-2" size="large" />
+      @if(userService.user(); as user){
+      <span class="app-bar__username">{{ user.email }}</span>
+      }
       <p-menu #menu [model]="items" [popup]="true" />
       <p-button
         icon="pi pi-ellipsis-v"

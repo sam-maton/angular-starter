@@ -44,12 +44,13 @@ export class LoginComponent {
       this.loginForm.setErrors({ incomplete: true });
       return;
     }
-    const { data, error } = await authClient.signIn.email({ email, password });
-    console.log(data);
-    if (error) {
-      console.error('Login error:', error.message);
-    } else {
+
+    try {
+      await this.userService.login(email, password);
       this.router.navigate(['/']);
+    } catch (error) {
+      console.error('Login error:', (error as Error).message);
+      return;
     }
   }
 }

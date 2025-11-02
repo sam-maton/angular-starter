@@ -23,8 +23,6 @@ export class UserService {
   }
 
   private async initializeAuth() {
-    // Check if user is already logged in (e.g., from session)
-    console.log('initialize user service');
     try {
       const session = await authClient.getSession();
       console.log(session);
@@ -34,5 +32,13 @@ export class UserService {
     } catch (error) {
       console.error('Failed to initialize auth:', error);
     }
+  }
+
+  async login(email: string, password: string) {
+    const { data, error } = await authClient.signIn.email({ email, password });
+    if (error) {
+      throw new Error(error.message);
+    }
+    this.userSignal.set(data.user);
   }
 }

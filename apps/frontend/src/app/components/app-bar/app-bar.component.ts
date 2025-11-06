@@ -15,6 +15,7 @@ import { UserService } from '../../services/user.service';
 })
 export class AppBarComponent implements OnInit {
   userService = inject(UserService);
+  userBadge = this.userService.user()?.name?.slice(0, 2).toUpperCase() || 'U';
 
   items: MenuItem[] = [];
 
